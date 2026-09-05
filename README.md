@@ -74,3 +74,6 @@ dann entsprechend anzupassen.
 ## Lokal ansehen
 
 Einfach `index.html` im Browser öffnen — es wird kein Server benötigt.
+
+- [ ] Vor dem Live-Gang: `robots.txt` und das `noindex`-Meta in `index.html` entfernen,
+      `<link rel="canonical">` auf die echte Domain setzen.
