@@ -84,9 +84,13 @@ a:hover { color: var(--orange); }
 }
 .brand { display: flex; align-items: center; text-decoration: none; margin-right: auto; }
 .brand-logo {
-  /* Die vollstaendige Logosperrung, so wie sie vom Kunden kommt:
-     Bildmarke oben, Schriftzug darunter. Das Logo liegt als JPEG auf Weiss
-     vor; freigestellt ist es bereits, multiply faengt die weichen Kanten ab. */
+  /* Die vollstaendige Logosperrung, unveraendert aus der Kundendatei:
+     Bildmarke oben, Schriftzug darunter. Nur der weisse Rand ist
+     weggeschnitten - die Farben selbst sind nicht angefasst.
+     Ein Freistellen per Helligkeit haette 65 % der Tinte halbtransparent
+     gemacht und die feinen Serifen ausgebleicht. Stattdessen bleibt der
+     weisse Grund im Bild und verschwindet hier per multiply auf dem hellen
+     Papierton. Sobald eine SVG-Fassung vorliegt, ersetzt sie beides. */
   height: 62px; width: auto; display: block;
   mix-blend-mode: multiply;
 }
