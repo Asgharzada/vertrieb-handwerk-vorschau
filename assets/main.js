@@ -2,6 +2,38 @@
 (function () {
   'use strict';
 
+  /* --- Farbwelt umschalten (nur fuer die Abstimmung) ---
+     Die Wahl wird gemerkt und gilt auch in den anderen Entwuerfen.
+     Direkt verlinkbar mit ?farbe=blau bzw. ?farbe=oliv. */
+  var FARBE_KEY = 'vh-farbe';
+
+  function farbeSetzen(wert, merken) {
+    if (wert === 'blau') {
+      document.documentElement.setAttribute('data-farbe', 'blau');
+    } else {
+      document.documentElement.removeAttribute('data-farbe');
+      wert = 'oliv';
+    }
+    if (merken) {
+      try { localStorage.setItem(FARBE_KEY, wert); } catch (e) {}
+    }
+    var knoepfe = document.querySelectorAll('.vbar-btn[data-farbe]');
+    Array.prototype.forEach.call(knoepfe, function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-farbe') === wert));
+    });
+  }
+
+  var ausUrl = (location.search.match(/[?&]farbe=(blau|oliv)/) || [])[1];
+  var gemerkt = null;
+  try { gemerkt = localStorage.getItem(FARBE_KEY); } catch (e) {}
+  farbeSetzen(ausUrl || gemerkt || 'oliv', !!ausUrl);
+
+  Array.prototype.forEach.call(document.querySelectorAll('.vbar-btn[data-farbe]'), function (b) {
+    b.addEventListener('click', function () {
+      farbeSetzen(b.getAttribute('data-farbe'), true);
+    });
+  });
+
   /* --- Mobiles Menue --- */
   var toggle = document.getElementById('navToggle');
   var nav = document.getElementById('nav');

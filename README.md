@@ -4,9 +4,36 @@ Kostenlose, unverbindliche Live-Vorschau der Startseite für **Achim Pressburger
 — Vertrieb im Handwerk**. Inhalt vollständig aus der Präsentation
 „Vertrieb im Handwerk" (10 Folien) übernommen.
 
+## Drei Entwürfe zur Auswahl
+
+Alle drei liegen in diesem Repository und teilen sich **eine** Stylesheet-Datei,
+**ein** Skript und **ein** Impressum. Eine Korrektur wirkt dadurch überall.
+
+| | Pfad | Idee |
+|---|---|---|
+| 1 | `/` | One-Pager — die vollständige Argumentationskette der Präsentation |
+| 2 | `/mehrseitig/` | Vier Seiten, genau wie vom Kunden benannt: Herausforderung, Leistung, Über mich, Kontakt |
+| 3 | `/kompakt/` | Kurze Landingpage — halbe Länge, Ziel ist der 30-Minuten-Termin |
+
+Oben auf jeder Seite sitzt eine dunkle Leiste zum Umschalten zwischen den
+Entwürfen und zwischen den zwei Farbwelten. **Vor dem Live-Gang entfernen:**
+die `<div class="vbar">`-Blöcke, den Abschnitt „Umschalter" in `assets/style.css`
+und den Block „Farbwelt umschalten" in `assets/main.js`.
+
+## Zwei Farbwelten
+
+| | Aktiv über | Herkunft |
+|---|---|---|
+| Oliv/Orange | Standard | die Präsentation, vom Kunden bestätigt |
+| Navy/Gold | `<html data-farbe="blau">` | der Logoentwurf „Pressburger Consulting" |
+
+Umgesetzt als reiner Token-Tausch in `assets/style.css` (`:root[data-farbe="blau"]`)
+— kein Baustein und kein HTML ändert sich. Die Wahl lässt sich direkt verlinken
+(`?farbe=blau` bzw. `?farbe=oliv`) und wird im Browser des Betrachters gemerkt.
+
 ## Aufbau
 
-Ein One-Pager mit Sprungmarken in der Kopfzeile:
+Entwurf 1 als One-Pager mit Sprungmarken in der Kopfzeile:
 
 | Abschnitt | Anker | Quelle (Folie) |
 |---|---|---|
@@ -19,7 +46,8 @@ Ein One-Pager mit Sprungmarken in der Kopfzeile:
 | Über mich | `#ueber-mich` | 10 |
 | Kontakt | `#kontakt` | — |
 
-Dazu `impressum.html`, `datenschutz.html` und `404.html`.
+Dazu `impressum.html`, `datenschutz.html` und `404.html` — von allen drei
+Entwürfen aus verlinkt.
 
 ## Technik
 
@@ -60,9 +88,11 @@ Alles Fehlende ist im Entwurf sichtbar als gestrichelter Kasten markiert
 - [ ] Leistungsbausteine konkretisieren
 - [ ] Kontaktdaten: Telefon, E-Mail, Anschrift
 - [ ] Impressum: Firmenname, Anschrift, USt-IdNr. bzw. Kleinunternehmer-Hinweis
-- [ ] Logo, falls vorhanden
+- [ ] Logo als Datei (SVG bevorzugt, sonst PNG mit Freistellung) → `bilder/`
+- [ ] Entscheidung Farbwelt: Oliv/Orange oder Navy/Gold
+- [ ] Entscheidung Name im Kopf: „Achim Pressburger" oder „Pressburger Consulting"
 - [ ] Wunschdomain
-- [ ] Vor dem Live-Gang: `robots.txt` und das `noindex`-Meta in `index.html`
+- [ ] Vor dem Live-Gang: Umschaltleiste entfernen, `robots.txt` und das `noindex`-Meta in `index.html`
       entfernen, `<link rel="canonical">` auf die echte Domain setzen
 
 ## Hosting

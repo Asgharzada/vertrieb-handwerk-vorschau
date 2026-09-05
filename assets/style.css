@@ -380,6 +380,109 @@ a:hover { color: var(--orange); }
 .site-footer a { color: rgba(255,255,255,.72); text-decoration: none; }
 .site-footer a:hover { color: var(--orange); }
 
+/* ---------- Zweite Farbwelt: Navy und Gold aus dem Logo ----------
+   Nur die Tokens werden getauscht, kein Baustein aendert sich.
+   Aktiv ueber <html data-farbe="blau">. */
+
+:root[data-farbe="blau"] {
+  --paper:      #F6F4EF;
+  --paper-warm: #EFECE4;
+  --ink:        #1B2A47;
+  --ink-soft:   #4B5769;
+  --ink-mute:   #8892A3;
+  --olive:      #22345A;
+  --olive-dark: #16233D;
+  --olive-tint: #E9EDF4;
+  --orange:     #A07E38;
+  --line:       #E2DDD1;
+}
+:root[data-farbe="blau"] .hero--kompakt .claim em { color: #E0C48A; }
+
+/* ---------- Umschalter zwischen den Entwuerfen ----------
+   Nur fuer die Abstimmung gedacht. Vor dem Live-Gang entfernen:
+   die Leiste selbst, diesen Block und den Hinweis in der Fusszeile. */
+
+.vbar { background: var(--ink); color: rgba(255,255,255,.6); }
+.vbar-inner {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem;
+  min-height: 46px; padding-block: .5rem;
+}
+.vbar-label {
+  font-size: .625rem; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.5); margin-right: .25rem;
+}
+.vbar a {
+  font-size: .75rem; color: rgba(255,255,255,.72); text-decoration: none;
+  padding: .3rem .8rem; border: 1px solid rgba(255,255,255,.22); border-radius: 999px;
+  transition: color .18s, border-color .18s, background-color .18s;
+}
+.vbar a:hover { color: #fff; border-color: var(--orange); }
+.vbar a[aria-current="page"] { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+.vbar-sep { width: 1px; height: 18px; background: rgba(255,255,255,.18); }
+.vbar-btn {
+  font: inherit; font-size: .75rem; color: rgba(255,255,255,.72); cursor: pointer;
+  background: transparent; padding: .3rem .8rem;
+  border: 1px solid rgba(255,255,255,.22); border-radius: 999px;
+  transition: color .18s, border-color .18s, background-color .18s;
+}
+.vbar-btn:hover { color: #fff; border-color: var(--orange); }
+.vbar-btn[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+/* ---------- Variante 2: Seitenkopf der Unterseiten ---------- */
+
+.pagehead {
+  border-left: 4px solid var(--orange);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+.pagehead h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+.pagehead .lead { margin-top: .25rem; }
+
+/* Weiterfuehrender Hinweis am Seitenende */
+.weiter {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1rem; border-top: 1px solid var(--line); padding-top: 1.75rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.weiter p { font-size: .9375rem; margin: 0; }
+
+/* ---------- Variante 3: kompakt ---------- */
+
+.hero--kompakt {
+  background: var(--olive); color: rgba(255,255,255,.85);
+  border-left: 4px solid var(--orange);
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+.hero--kompakt::after { display: none; }
+.hero--kompakt h1, .hero--kompakt .claim { color: #fff; }
+.hero--kompakt .claim em { color: #F6D3A8; }
+.hero--kompakt .eyebrow { color: rgba(255,255,255,.6); }
+.hero--kompakt .lead { color: rgba(255,255,255,.82); }
+.hero--kompakt .rule { background: var(--orange); }
+.hero--kompakt .btn-primary { background: var(--paper); color: var(--ink); }
+.hero--kompakt .btn-primary:hover { background: #fff; color: var(--ink); }
+.hero--kompakt .btn-ghost { border-color: rgba(255,255,255,.35); color: #fff; }
+.hero--kompakt .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: #fff; color: #fff; }
+.hero--kompakt .hero-meta { border-top-color: rgba(255,255,255,.2); color: rgba(255,255,255,.55); }
+
+.hero--kompakt .hero-grid {
+  display: grid; grid-template-columns: 1fr 260px; gap: clamp(2rem, 5vw, 4rem);
+  align-items: center; max-width: none;
+}
+@media (max-width: 860px) { .hero--kompakt .hero-grid { grid-template-columns: 1fr; } }
+.hero--kompakt .portrait { background: rgba(255,255,255,.12); border-top-color: var(--orange); }
+.hero--kompakt .portrait .ph { color: rgba(255,255,255,.75); }
+
+/* Kurzfassung: Aussagen als schmale Liste statt als Kartenraster. */
+.punkte { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--line); border-radius: var(--radius); overflow: hidden; }
+.punkte li { background: var(--card); padding: 1.15rem 1.4rem; display: flex; gap: 1.1rem; align-items: baseline; }
+.punkte .num {
+  flex: 0 0 auto; font-family: var(--serif); font-weight: 700; font-size: .8125rem;
+  color: var(--orange); letter-spacing: .08em;
+}
+.punkte b { display: block; font-family: var(--serif); font-size: 1.0625rem; color: var(--ink); margin-bottom: .1rem; }
+.punkte span.t { font-size: .9375rem; color: var(--ink-soft); }
+
 /* ---------- Rechtsseiten ---------- */
 
 .legal { max-width: 46rem; padding-block: clamp(3rem, 7vw, 5rem); }

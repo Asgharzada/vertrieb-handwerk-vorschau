@@ -13,13 +13,27 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="Vertrieb im Handwerk &ndash; Achim Pressburger">
 <meta property="og:description" content="Nicht das Marketing ist das Problem &ndash; der Verkaufsablauf fehlt.">
-<script>document.documentElement.className += " js";</script>
-<link rel="stylesheet" href="assets/style.css?v=4">
+<script>document.documentElement.className += " js";
+try{var f=(location.search.match(/[?&]farbe=(blau|oliv)/)||[])[1]||localStorage.getItem('vh-farbe');if(f==='blau')document.documentElement.setAttribute('data-farbe','blau');}catch(e){}</script>
+<link rel="stylesheet" href="assets/style.css?v=6">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%236E7F4E'/><rect x='6' y='7' width='4' height='18' fill='%23D2762C'/><rect x='13' y='7' width='13' height='3' fill='%23F4F1E8'/><rect x='13' y='14' width='13' height='3' fill='%23F4F1E8'/><rect x='13' y='21' width='9' height='3' fill='%23F4F1E8'/></svg>">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<div class="vbar">
+  <div class="wrap vbar-inner">
+    <span class="vbar-label">Entwurf</span>
+    <a href="./" aria-current="page">1 &middot; Eine Seite</a>
+    <a href="mehrseitig/">2 &middot; Mehrere Seiten</a>
+    <a href="kompakt/">3 &middot; Kompakt</a>
+    <span class="vbar-sep" aria-hidden="true"></span>
+    <span class="vbar-label">Farbe</span>
+    <button type="button" class="vbar-btn" data-farbe="oliv" aria-pressed="true">Oliv</button>
+    <button type="button" class="vbar-btn" data-farbe="blau" aria-pressed="false">Blau</button>
+  </div>
+</div>
 
 <header class="site-header" id="header">
   <div class="wrap header-inner">
@@ -387,6 +401,6 @@
   </div>
 </footer>
 
-<script src="assets/main.js?v=2"></script>
+<script src="assets/main.js?v=6"></script>
 </body>
 </html>
