@@ -62,6 +62,8 @@ Alles Fehlende ist im Entwurf sichtbar als gestrichelter Kasten markiert
 - [ ] Impressum: Firmenname, Anschrift, USt-IdNr. bzw. Kleinunternehmer-Hinweis
 - [ ] Logo, falls vorhanden
 - [ ] Wunschdomain
+- [ ] Vor dem Live-Gang: `robots.txt` und das `noindex`-Meta in `index.html`
+      entfernen, `<link rel="canonical">` auf die echte Domain setzen
 
 ## Hosting
 
@@ -74,6 +76,3 @@ dann entsprechend anzupassen.
 ## Lokal ansehen
 
 Einfach `index.html` im Browser öffnen — es wird kein Server benötigt.
-
-- [ ] Vor dem Live-Gang: `robots.txt` und das `noindex`-Meta in `index.html` entfernen,
-      `<link rel="canonical">` auf die echte Domain setzen.
