@@ -21,12 +21,15 @@
   --gap: clamp(1rem, 2.5vw, 1.75rem);
   --section-y: clamp(4rem, 9vw, 7.5rem);
   --radius: 10px;
+  /* Kopfhoehe haengt am Logo und wird an drei Stellen gebraucht:
+     Kopfzeile, Sprungmarken-Versatz und Ansatz des mobilen Menues. */
+  --kopfhoehe: 88px;
   --shadow: 0 1px 2px rgba(46, 69, 80, .05), 0 8px 24px rgba(46, 69, 80, .06);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--kopfhoehe) + 18px); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -77,26 +80,18 @@ a:hover { color: var(--orange); }
 }
 .header-inner {
   display: flex; align-items: center; gap: 1.5rem;
-  min-height: 72px;
+  min-height: var(--kopfhoehe);
 }
-.brand {
-  display: flex; align-items: center; gap: .7rem;
-  line-height: 1.2; text-decoration: none; margin-right: auto;
-}
-.brand-mark {
-  height: 36px; width: auto; flex: 0 0 auto;
-  /* Das Logo liegt als JPEG auf Weiss vor. Freigestellt ist es bereits,
-     multiply faengt zusaetzlich die weichen Kanten ab. */
+.brand { display: flex; align-items: center; text-decoration: none; margin-right: auto; }
+.brand-logo {
+  /* Die vollstaendige Logosperrung, so wie sie vom Kunden kommt:
+     Bildmarke oben, Schriftzug darunter. Das Logo liegt als JPEG auf Weiss
+     vor; freigestellt ist es bereits, multiply faengt die weichen Kanten ab. */
+  height: 62px; width: auto; display: block;
   mix-blend-mode: multiply;
 }
-@media (max-width: 480px) { .brand-mark { height: 30px; } }
-.brand-text { display: flex; flex-direction: column; }
-.brand-text strong { font-family: var(--serif); font-size: 1.0625rem; color: var(--ink); letter-spacing: .01em; }
-.brand-text span {
-  font-size: .625rem; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--ink-mute); margin-top: .18rem;
-}
-@media (max-width: 380px) { .brand-text strong { font-size: .95rem; } }
+@media (max-width: 900px) { .brand-logo { height: 50px; } }
+@media (max-width: 380px) { .brand-logo { height: 44px; } }
 
 .nav { display: flex; align-items: center; gap: 1.75rem; }
 .nav a {
@@ -140,9 +135,10 @@ a:hover { color: var(--orange); }
 .nav-toggle[aria-expanded="true"] span::after  { transform: rotate(-45deg) translateY(0); }
 
 @media (max-width: 900px) {
+  :root { --kopfhoehe: 74px; }
   .nav-toggle { display: inline-flex; }
   .nav {
-    position: fixed; inset: 72px 0 auto; flex-direction: column; align-items: stretch;
+    position: fixed; inset: var(--kopfhoehe) 0 auto; flex-direction: column; align-items: stretch;
     gap: 0; background: var(--paper); border-bottom: 1px solid var(--line);
     padding: .5rem 1.25rem 1.5rem; transform: translateY(-120%);
     box-shadow: 0 20px 40px rgba(46,69,80,.08);
@@ -227,7 +223,13 @@ a:hover { color: var(--orange); }
   background: radial-gradient(circle at 50% 50%, rgba(110,127,78,.14), transparent 68%);
   border-radius: 50%; pointer-events: none;
 }
-.hero-inner { position: relative; max-width: 46rem; }
+/* Achtung: .hero-inner traegt auch .wrap, und .wrap zentriert sich per
+   margin-inline:auto. Eine max-width hier wuerde nicht den Text schmaler
+   machen, sondern den ganzen Kasten schrumpfen und mittig schieben - der
+   Kopfbereich stuende dann weiter rechts als jeder Abschnitt darunter.
+   Deshalb begrenzen die Kinder ihre Breite selbst. */
+.hero-inner { position: relative; }
+.hero-inner > * { max-width: 46rem; }
 .hero h1 { margin-bottom: .35em; }
 .hero .claim {
   font-family: var(--serif); font-size: clamp(1.25rem, 2.6vw, 1.65rem);
@@ -276,11 +278,16 @@ a:hover { color: var(--orange); }
 /* Grosse Grafik im Kopfbereich - reine Dekoration, deshalb auf
    kleinen Schirmen ausgeblendet. */
 .hero-deko {
-  position: absolute; right: -2%; top: 50%; transform: translateY(-50%);
-  width: min(38vw, 380px); height: auto; opacity: .85; pointer-events: none;
+  position: absolute; top: 50%; transform: translateY(-50%);
+  /* Buendig mit der rechten Kante des Rasters, nicht mit dem Fensterrand -
+     sonst haengt die Zeichnung halb ausserhalb. */
+  right: max(1.25rem, calc((100% - var(--wrap)) / 2));
+  width: 330px; height: auto; opacity: .85; pointer-events: none;
   color: var(--olive);
 }
-@media (max-width: 900px) { .hero-deko { display: none; } }
+/* Der Text ist bis 46rem breit. Erst ab dieser Fensterbreite bleibt daneben
+   genug Platz, vorher wuerde die Zeichnung in die Schlagzeile laufen. */
+@media (max-width: 1149px) { .hero-deko { display: none; } }
 
 /* Erklaerende Zeichnung: aus vielen Anfragen werden wenige Auftraege. */
 .diagramm {
@@ -588,7 +595,9 @@ a:hover { color: var(--orange); }
 
 /* ---------- Rechtsseiten ---------- */
 
-.legal { max-width: 46rem; padding-block: clamp(3rem, 7vw, 5rem); }
+/* Gleiche Falle wie beim Kopfbereich: .legal ist ebenfalls ein .wrap. */
+.legal { padding-block: clamp(3rem, 7vw, 5rem); }
+.legal > * { max-width: 46rem; }
 .legal h2 { font-size: clamp(1.25rem, 2.4vw, 1.5rem); margin-top: 2.25rem; }
 .legal p, .legal li { font-size: .9375rem; }
 
