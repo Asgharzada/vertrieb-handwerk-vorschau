@@ -77,6 +77,24 @@ Direkt aus der Präsentation übernommen — vom Kunden bestätigt.
 | Oliv (Akzentflächen) | `#6E7F4E` |
 | Orange (Akzentlinien) | `#D2762C` |
 
+## Bildsprache
+
+Es sind **keine Fotos** eingebunden — bis auf die beiden Platzhalter für
+Portrait und Logo. Stattdessen zeichnet die Seite selbst:
+
+- eine Kopfgrafik, die das Säulen-Motiv des Logos aufnimmt
+- eine Trichter-Zeichnung, die die Kernaussage zeigt: viele Anfragen oben,
+  wenige Aufträge unten, der Rest geht unterwegs verloren
+- acht Strich-Icons für die fünf Kaufkriterien und die drei Leistungssäulen
+
+Alles liegt als Inline-SVG direkt im HTML — keine fremden Dateien, keine
+Lizenzkosten, keine Bildnachweise, und die Zeichnungen übernehmen über
+`currentColor` und die CSS-Variablen automatisch die aktive Farbwelt.
+
+Echte Fotos können das später ergänzen oder ersetzen. Am glaubwürdigsten
+wären eigene Aufnahmen des Kunden; gekaufte Stockfotos wären ein zusätzlicher
+Posten, der nicht im Festpreis steckt.
+
 ## Offene Punkte
 
 Alles Fehlende ist im Entwurf sichtbar als gestrichelter Kasten markiert
@@ -88,7 +106,10 @@ Alles Fehlende ist im Entwurf sichtbar als gestrichelter Kasten markiert
 - [ ] Leistungsbausteine konkretisieren
 - [ ] Kontaktdaten: Telefon, E-Mail, Anschrift
 - [ ] Impressum: Firmenname, Anschrift, USt-IdNr. bzw. Kleinunternehmer-Hinweis
-- [ ] Logo als Datei (SVG bevorzugt, sonst PNG mit Freistellung) → `bilder/`
+- [x] Logo eingebaut (Bildmarke im Kopf, aus dem JPEG freigestellt)
+- [ ] Logo als **SVG** vom Grafiker — schärfer und ~5 statt 95 KB
+- [ ] Helle Logofassung für dunkle Flächen (Fußzeile)
+- [ ] Eigene Fotos des Kunden, falls vorhanden
 - [ ] Entscheidung Farbwelt: Oliv/Orange oder Navy/Gold
 - [ ] Entscheidung Name im Kopf: „Achim Pressburger" oder „Pressburger Consulting"
 - [ ] Wunschdomain
