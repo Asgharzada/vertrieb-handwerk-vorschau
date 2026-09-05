@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex, nofollow">
 <script>document.documentElement.className += " js";
 try{var f=(location.search.match(/[?&]farbe=(blau|oliv)/)||[])[1]||localStorage.getItem('vh-farbe');if(f==='blau')document.documentElement.setAttribute('data-farbe','blau');}catch(e){}</script>
-<link rel="stylesheet" href="../assets/style.css?v=6">
+<link rel="stylesheet" href="../assets/style.css?v=8">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%236E7F4E'/><rect x='6' y='7' width='4' height='18' fill='%23D2762C'/><rect x='13' y='7' width='13' height='3' fill='%23F4F1E8'/><rect x='13' y='14' width='13' height='3' fill='%23F4F1E8'/><rect x='13' y='21' width='9' height='3' fill='%23F4F1E8'/></svg>">
 </head>
 <body>
@@ -32,8 +32,12 @@ try{var f=(location.search.match(/[?&]farbe=(blau|oliv)/)||[])[1]||localStorage.
 <header class="site-header" id="header">
   <div class="wrap header-inner">
     <a class="brand" href="./">
-      <strong>Achim Pressburger</strong>
-      <span>Vertrieb im Handwerk</span>
+      <img class="brand-mark" src="../bilder/logo-marke.png" alt=""
+           width="207" height="220" decoding="async">
+      <span class="brand-text">
+        <strong>Achim Pressburger</strong>
+        <span>Vertrieb im Handwerk</span>
+      </span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Men&uuml; &ouml;ffnen"><span></span></button>
     <nav class="nav" id="nav" aria-label="Hauptnavigation">
@@ -77,33 +81,42 @@ try{var f=(location.search.match(/[?&]farbe=(blau|oliv)/)||[])[1]||localStorage.
         <h2>Worum es geht</h2>
       </div>
 
-      <div class="grid grid-3 reveal">
-        <article class="card">
+      <div class="kacheln reveal">
+        <a class="kachel" href="herausforderung.html">
           <span class="num">01</span>
           <h3>Die Herausforderung</h3>
           <p>
             Viele Anfragen, kaum lukrative Auftr&auml;ge. Schuld ist selten das
             Marketing &ndash; es fehlt der Ablauf dahinter.
           </p>
-          <p style="margin-top:1rem"><a href="herausforderung.html">Zur Herausforderung</a></p>
-        </article>
-        <article class="card">
+          <span class="pfeil">Ansehen</span>
+        </a>
+        <a class="kachel" href="leistung.html">
           <span class="num">02</span>
           <h3>Meine Leistung</h3>
           <p>
             Ein Verkaufsablauf, der auf den Kunden eingeht, den Wert sichtbar
-            macht und Sicherheit gibt.
+            macht und dem Kunden Sicherheit gibt.
           </p>
-          <p style="margin-top:1rem"><a href="leistung.html">Zur Leistung</a></p>
-        </article>
-        <article class="card">
+          <span class="pfeil">Ansehen</span>
+        </a>
+        <a class="kachel" href="ueber-mich.html">
           <span class="num">03</span>
           <h3>&Uuml;ber mich</h3>
           <p>
             Wer mit Ihnen arbeitet und woran genau wir gemeinsam ansetzen.
           </p>
-          <p style="margin-top:1rem"><a href="ueber-mich.html">Zur Vorstellung</a></p>
-        </article>
+          <span class="pfeil">Ansehen</span>
+        </a>
+        <a class="kachel" href="kontakt.html">
+          <span class="num">04</span>
+          <h3>Kontakt</h3>
+          <p>
+            Unverbindliches Gespr&auml;ch, ca. 30 Minuten &ndash; telefonisch oder
+            per Video.
+          </p>
+          <span class="pfeil">Termin anfragen</span>
+        </a>
       </div>
     </div>
   </section>
@@ -134,6 +147,6 @@ try{var f=(location.search.match(/[?&]farbe=(blau|oliv)/)||[])[1]||localStorage.
   </div>
 </footer>
 
-<script src="../assets/main.js?v=6"></script>
+<script src="../assets/main.js?v=8"></script>
 </body>
 </html>
