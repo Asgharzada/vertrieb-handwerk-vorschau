@@ -654,3 +654,18 @@ p.hero-meta {
 
 /* Blog-Datum als Kicker */
 .einzel .wp-block-post-date.eyebrow { margin-bottom: 1rem; }
+
+/* Aufklapp-Menue: WordPress uebernimmt die Rechtsbuendigkeit der Desktop-
+   Navigation ins Overlay. Dort sollen die Eintraege linksbuendig und
+   volle Breite sein, der Knopf als Block darunter. */
+.site-header .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open { background-color: var(--paper); }
+.site-header .wp-block-navigation__responsive-container.is-menu-open {
+  --navigation-layout-justification-setting: flex-start;
+  --navigation-layout-justify: flex-start;
+  padding-top: calc(var(--kopfhoehe) + .5rem);
+}
+.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
+.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container { align-items: stretch; width: 100%; }
+.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content { text-align: left; width: 100%; }
+.site-header .wp-block-navigation__responsive-container.is-menu-open .nav-cta { margin-top: 1rem; }
+.site-header .wp-block-navigation__responsive-container.is-menu-open .nav-cta .wp-block-navigation-item__content { text-align: center; display: block; }
