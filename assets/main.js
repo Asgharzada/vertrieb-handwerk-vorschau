@@ -129,7 +129,7 @@
       ].join('\n');
 
       window.location.href =
-        'mailto:kontakt@example.de' +
+        'mailto:achim@pressburger-consulting.de' +
         '?subject=' + encodeURIComponent(betreff) +
         '&body=' + encodeURIComponent(body);
     });

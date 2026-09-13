@@ -101,11 +101,12 @@ Alles Fehlende ist im Entwurf sichtbar als gestrichelter Kasten markiert
 (`.platzhalter` in `assets/style.css`) und lässt sich mit einer Suche nach
 `platzhalter` finden.
 
+- [x] Texte vom Kunden (13.9., `inhalt/webseiteninhalte.md`) in Entwurf 1 eingearbeitet
+- [x] Kontaktdaten, Impressum und Datenschutz mit echten Angaben
+- [ ] Impressum: USt-IdNr. bzw. Kleinunternehmer-Hinweis
 - [ ] Portraitfoto in Originalauflösung → `bilder/achim-pressburger.jpg`
-- [ ] Text für „Über mich" (Werdegang, Stationen, typische Kunden)
-- [ ] Leistungsbausteine konkretisieren
-- [ ] Kontaktdaten: Telefon, E-Mail, Anschrift
-- [ ] Impressum: Firmenname, Anschrift, USt-IdNr. bzw. Kleinunternehmer-Hinweis
+- [ ] Zwei Bilder für die Erfolgsgeschichten → `bilder/erfolg-badsanierung.webp`, `bilder/erfolg-balkonsanierung.webp` (3:2, ~1600×1067, als „Symbolbild" beschriftet)
+- [ ] Entwürfe 2 und 3 auf den neuen Text bringen — oder entfernen, sobald der Kunde Entwurf 1 bestätigt
 - [x] Logo eingebaut (Bildmarke im Kopf, aus dem JPEG freigestellt)
 - [ ] Logo als **SVG** vom Grafiker — schärfer und ~5 statt 95 KB
 - [ ] Helle Logofassung für dunkle Flächen (Fußzeile)
