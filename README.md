@@ -85,8 +85,8 @@ Alles Fehlende ist im Entwurf sichtbar als gestrichelter Kasten markiert
 - [x] Texte vom Kunden (13.9., `inhalt/webseiteninhalte.md`) in Entwurf 1 eingearbeitet
 - [x] Kontaktdaten, Impressum und Datenschutz mit echten Angaben
 - [ ] Impressum: USt-IdNr. bzw. Kleinunternehmer-Hinweis
-- [ ] Portraitfoto in Originalauflösung → `bilder/achim-pressburger.jpg`
-- [ ] Zwei Bilder für die Erfolgsgeschichten → `bilder/erfolg-badsanierung.webp`, `bilder/erfolg-balkonsanierung.webp` (3:2, ~1600×1067, als „Symbolbild" beschriftet)
+- [x] Portraitfoto eingebaut (640 px, quadratisch — für ein grosses Hero-Bild später eine höhere Auflösung erbitten)
+- [x] Zwei KI-Bilder für die Erfolgsgeschichten eingebaut, als „Symbolbild" beschriftet; Originale in `inhalt/bilder-original/` (nicht im Repo)
 - [x] Logo eingebaut (Bildmarke im Kopf, aus dem JPEG freigestellt)
 - [ ] Logo als **SVG** vom Grafiker — schärfer und ~5 statt 95 KB
 - [ ] Helle Logofassung für dunkle Flächen (Fußzeile)

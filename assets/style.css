@@ -360,7 +360,9 @@ a:hover { color: var(--orange); }
 
 .erfolg-bild { margin: 0; }
 .erfolg-bild img, .erfolg-bild .bildslot {
-  width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+  /* height:auto ist noetig, sonst gewinnt das height-Attribut des <img>
+     gegen aspect-ratio und das Bild wird in die Hoehe gezogen. */
+  width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover;
   border-radius: var(--radius); box-shadow: var(--shadow); display: block;
 }
 /* Solange das Foto fehlt: ruhige Flaeche in der Akzentfarbe, nicht leer. */
@@ -493,7 +495,10 @@ a:hover { color: var(--orange); }
 @media (max-width: 820px) { .about { grid-template-columns: 1fr; } }
 .portrait {
   border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-  background: var(--olive-tint); aspect-ratio: 3 / 4;
+  background: var(--olive-tint);
+  /* Das gelieferte Foto ist quadratisch (640 px). Quadrat statt 3:4,
+     damit nichts vom Gesicht beschnitten wird. */
+  aspect-ratio: 1 / 1;
   display: grid; place-items: center; border-top: 3px solid var(--orange);
   max-width: 340px;
 }

@@ -15,7 +15,7 @@
 <meta property="og:description" content="Gute Anfragen allein reichen nicht aus. Entscheidend ist, was Ihr Betrieb daraus macht.">
 <script>document.documentElement.className += " js";
 if(/[?&]farbe=oliv/.test(location.search))document.documentElement.setAttribute('data-farbe','oliv');</script>
-<link rel="stylesheet" href="assets/style.css?v=16">
+<link rel="stylesheet" href="assets/style.css?v=18">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2322345A'/><rect x='6' y='7' width='4' height='18' fill='%23A07E38'/><rect x='13' y='7' width='13' height='3' fill='%23F6F4EF'/><rect x='13' y='14' width='13' height='3' fill='%23F6F4EF'/><rect x='13' y='21' width='9' height='3' fill='%23F6F4EF'/></svg>">
 </head>
 <body>
@@ -145,9 +145,10 @@ if(/[?&]farbe=oliv/.test(location.search))document.documentElement.setAttribute(
 
       <article class="erfolg reveal">
         <figure class="erfolg-bild">
-          <!-- Sobald das Bild vorliegt:
-               <img src="bilder/erfolg-badsanierung.webp" alt="Fertig sanierter Badbereich" width="1600" height="1067" loading="lazy"> -->
-          <div class="bildslot" role="img" aria-label="Bildplatz: fertig saniertes Bad">Bild folgt<br>fertiges Bad</div>
+          <img src="bilder/erfolg-badsanierung.webp"
+               srcset="bilder/erfolg-badsanierung-800.webp 800w, bilder/erfolg-badsanierung.webp 1264w"
+               sizes="(max-width: 860px) 100vw, 50vw"
+               alt="Modern saniertes Bad mit bodengleicher Dusche und Holzwaschtisch" width="1264" height="848" loading="lazy" decoding="async">
           <figcaption>Symbolbild</figcaption>
         </figure>
         <div class="erfolg-text">
@@ -182,9 +183,10 @@ if(/[?&]farbe=oliv/.test(location.search))document.documentElement.setAttribute(
 
       <article class="erfolg erfolg--gespiegelt reveal">
         <figure class="erfolg-bild">
-          <!-- Sobald das Bild vorliegt:
-               <img src="bilder/erfolg-balkonsanierung.webp" alt="Neu sanierte große Terrasse" width="1600" height="1067" loading="lazy"> -->
-          <div class="bildslot" role="img" aria-label="Bildplatz: neu sanierte Terrasse">Bild folgt<br>sanierte Terrasse</div>
+          <img src="bilder/erfolg-balkonsanierung.webp"
+               srcset="bilder/erfolg-balkonsanierung-800.webp 800w, bilder/erfolg-balkonsanierung.webp 1264w"
+               sizes="(max-width: 860px) 100vw, 50vw"
+               alt="Neu sanierte Dachterrasse mit Glasgeländer und Pflanzkübeln" width="1264" height="848" loading="lazy" decoding="async">
           <figcaption>Symbolbild</figcaption>
         </figure>
         <div class="erfolg-text">
@@ -265,9 +267,8 @@ if(/[?&]farbe=oliv/.test(location.search))document.documentElement.setAttribute(
 
       <div class="about reveal">
         <figure class="portrait" style="margin:0">
-          <!-- Sobald das Portraitfoto in Originalaufloesung vorliegt:
-               <img src="bilder/achim-pressburger.jpg" alt="Achim Pressburger"> -->
-          <figcaption class="ph">Portraitfoto<br>folgt</figcaption>
+          <img src="bilder/achim-pressburger.webp" alt="Achim Pressburger"
+               width="640" height="638" loading="lazy" decoding="async">
         </figure>
 
         <div class="prosa">
@@ -359,6 +360,6 @@ if(/[?&]farbe=oliv/.test(location.search))document.documentElement.setAttribute(
   </div>
 </footer>
 
-<script src="assets/main.js?v=16"></script>
+<script src="assets/main.js?v=18"></script>
 </body>
 </html>
