@@ -72,8 +72,12 @@ a:hover { color: var(--orange); }
 
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(246, 244, 239, .92);
-  backdrop-filter: saturate(140%) blur(10px);
+  /* Voll deckend, kein backdrop-filter: Das Logo liegt als Bild auf
+     weissem Grund und wird per multiply eingeblendet. Bei einem nur zu
+     92 % deckenden Kopf schien der weisse Kasten ueber dunklen Abschnitten
+     durch. Nebeneffekt: ohne backdrop-filter ist der Kopf kein Bezugspunkt
+     mehr fuer position:fixed, das mobile Menue rechnet wieder vom Fenster. */
+  background: var(--paper);
   border-bottom: 1px solid transparent;
   transition: border-color .25s, box-shadow .25s;
 }
