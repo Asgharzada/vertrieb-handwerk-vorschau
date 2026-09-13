@@ -1,0 +1,42 @@
+# .htaccess fuer das Web-Verzeichnis der Domain (auf dem Server als ".htaccess" ablegen).
+# WordPress schreibt seinen eigenen Block zwischen "# BEGIN WordPress" und "# END WordPress"
+# selbst - diesen Teil unangetastet lassen.
+
+# --- HTTPS und www erzwingen ---
+RewriteEngine On
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.pressburger-consulting.de%{REQUEST_URI} [L,R=301]
+
+# --- Sicherheits-Header ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# --- Empfindliche Dateien sperren ---
+<FilesMatch "^(wp-config\.php|xmlrpc\.php|readme\.html|license\.txt|\.htaccess)$">
+  Require all denied
+</FilesMatch>
+
+# --- Kein PHP in den Uploads ---
+<IfModule mod_rewrite.c>
+  RewriteRule ^wp-content/uploads/.*\.php$ - [F,L]
+</IfModule>
+
+# --- Browser-Cache fuer Assets ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# BEGIN WordPress
+# (wird von WordPress selbst gefuellt)
+# END WordPress

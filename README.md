@@ -1,4 +1,14 @@
-# Vertrieb im Handwerk — Vorschau
+# Vertrieb im Handwerk — Vorschau und WordPress-Theme
+
+Zwei Dinge in einem Repository:
+
+- **Wurzel**: die statische Vorschau (GitHub Pages), mit der der Kunde abgestimmt hat.
+- **`wp-theme/pressburger/`**: das WordPress-Block-Theme für den Live-Betrieb auf Strato.
+  Ablauf für den Go-live in `strato/GO-LIVE.md`, Deploy per `.github/workflows/deploy-theme.yml`.
+
+Lokale WordPress-Umgebung: `E:\Shopify\wp-pressburger` (nicht im Repo), Start über
+`.claude/launch.json` → `wp`; das Theme ist per Junction eingebunden.
+
 
 Kostenlose, unverbindliche Live-Vorschau der Startseite für **Achim Pressburger
 — Vertrieb im Handwerk**. Inhalt vollständig aus der Präsentation

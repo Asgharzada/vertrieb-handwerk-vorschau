@@ -1,0 +1,36 @@
+name: Theme auf Strato
+
+# Bei jedem Push auf main wird nur das Theme uebertragen - nie WordPress
+# selbst, nie Plugins, nie Uploads, nie wp-config. Die leben auf dem Server.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'wp-theme/pressburger/**'
+      - '.github/workflows/deploy-theme.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Theme per FTPS hochladen
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.STRATO_FTP_SERVER }}
+          username: ${{ secrets.STRATO_FTP_USER }}
+          password: ${{ secrets.STRATO_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: wp-theme/pressburger/
+          # Pfad zum Theme-Ordner auf dem Server, relativ zum FTP-Wurzelverzeichnis.
+          # Bei Strato z. B. "pressburger-consulting.de/wp-content/themes/pressburger/"
+          server-dir: ${{ secrets.STRATO_THEME_DIR }}
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
