@@ -2,17 +2,20 @@
    Palette und Typografie aus der Praesentation uebernommen. */
 
 :root {
-  --paper:      #F4F1E8;
-  --paper-warm: #EFEBDE;
+  /* Grundpalette: Navy und Gold aus dem Logo. Die Token-Namen (--olive,
+     --orange) stammen aus der ersten Fassung und bleiben, damit die
+     Bausteine unveraendert weiterlaufen. */
+  --paper:      #F6F4EF;
+  --paper-warm: #EFECE4;
   --card:       #FFFFFF;
-  --ink:        #2E4550;
-  --ink-soft:   #5B6970;
-  --ink-mute:   #8A9299;
-  --olive:      #6E7F4E;
-  --olive-dark: #5C6B40;
-  --olive-tint: #EDF0E4;
-  --orange:     #D2762C;
-  --line:       #E0DACB;
+  --ink:        #1B2A47;
+  --ink-soft:   #4B5769;
+  --ink-mute:   #8892A3;
+  --olive:      #22345A;
+  --olive-dark: #16233D;
+  --olive-tint: #E9EDF4;
+  --orange:     #A07E38;
+  --line:       #E2DDD1;
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --sans:  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -69,7 +72,7 @@ a:hover { color: var(--orange); }
 
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(244, 241, 232, .92);
+  background: rgba(246, 244, 239, .92);
   backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color .25s, box-shadow .25s;
@@ -539,54 +542,21 @@ a:hover { color: var(--orange); }
 .site-footer a { color: rgba(255,255,255,.72); text-decoration: none; }
 .site-footer a:hover { color: var(--orange); }
 
-/* ---------- Zweite Farbwelt: Navy und Gold aus dem Logo ----------
-   Nur die Tokens werden getauscht, kein Baustein aendert sich.
-   Aktiv ueber <html data-farbe="blau">. */
+/* ---------- Alternative Farbwelt: Oliv/Orange aus der Praesentation ----------
+   Nur noch ueber ?farbe=oliv erreichbar, falls der Kunde vergleichen will. */
 
-:root[data-farbe="blau"] {
-  --paper:      #F6F4EF;
-  --paper-warm: #EFECE4;
-  --ink:        #1B2A47;
-  --ink-soft:   #4B5769;
-  --ink-mute:   #8892A3;
-  --olive:      #22345A;
-  --olive-dark: #16233D;
-  --olive-tint: #E9EDF4;
-  --orange:     #A07E38;
-  --line:       #E2DDD1;
+:root[data-farbe="oliv"] {
+  --paper:      #F4F1E8;
+  --paper-warm: #EFEBDE;
+  --ink:        #2E4550;
+  --ink-soft:   #5B6970;
+  --ink-mute:   #8A9299;
+  --olive:      #6E7F4E;
+  --olive-dark: #5C6B40;
+  --olive-tint: #EDF0E4;
+  --orange:     #D2762C;
+  --line:       #E0DACB;
 }
-:root[data-farbe="blau"] .hero--kompakt .claim em { color: #E0C48A; }
-
-/* ---------- Umschalter zwischen den Entwuerfen ----------
-   Nur fuer die Abstimmung gedacht. Vor dem Live-Gang entfernen:
-   die Leiste selbst, diesen Block und den Hinweis in der Fusszeile. */
-
-.vbar { background: var(--ink); color: rgba(255,255,255,.6); }
-.vbar-inner {
-  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem;
-  min-height: 46px; padding-block: .5rem;
-}
-.vbar-label {
-  font-size: .625rem; letter-spacing: .18em; text-transform: uppercase;
-  color: rgba(255,255,255,.5); margin-right: .25rem;
-}
-.vbar a {
-  font-size: .75rem; color: rgba(255,255,255,.72); text-decoration: none;
-  padding: .3rem .8rem; border: 1px solid rgba(255,255,255,.22); border-radius: 999px;
-  transition: color .18s, border-color .18s, background-color .18s;
-}
-.vbar a:hover { color: #fff; border-color: var(--orange); }
-.vbar a[aria-current="page"] { background: var(--orange); border-color: var(--orange); color: #fff; }
-
-.vbar-sep { width: 1px; height: 18px; background: rgba(255,255,255,.18); }
-.vbar-btn {
-  font: inherit; font-size: .75rem; color: rgba(255,255,255,.72); cursor: pointer;
-  background: transparent; padding: .3rem .8rem;
-  border: 1px solid rgba(255,255,255,.22); border-radius: 999px;
-  transition: color .18s, border-color .18s, background-color .18s;
-}
-.vbar-btn:hover { color: #fff; border-color: var(--orange); }
-.vbar-btn[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: #fff; }
 
 /* ---------- Variante 2: Seitenkopf der Unterseiten ---------- */
 

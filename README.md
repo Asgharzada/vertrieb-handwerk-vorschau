@@ -4,32 +4,13 @@ Kostenlose, unverbindliche Live-Vorschau der Startseite für **Achim Pressburger
 — Vertrieb im Handwerk**. Inhalt vollständig aus der Präsentation
 „Vertrieb im Handwerk" (10 Folien) übernommen.
 
-## Drei Entwürfe zur Auswahl
+## Stand
 
-Alle drei liegen in diesem Repository und teilen sich **eine** Stylesheet-Datei,
-**ein** Skript und **ein** Impressum. Eine Korrektur wirkt dadurch überall.
-
-| | Pfad | Idee |
-|---|---|---|
-| 1 | `/` | One-Pager — die vollständige Argumentationskette der Präsentation |
-| 2 | `/mehrseitig/` | Vier Seiten, genau wie vom Kunden benannt: Herausforderung, Leistung, Über mich, Kontakt |
-| 3 | `/kompakt/` | Kurze Landingpage — halbe Länge, Ziel ist der 30-Minuten-Termin |
-
-Oben auf jeder Seite sitzt eine dunkle Leiste zum Umschalten zwischen den
-Entwürfen und zwischen den zwei Farbwelten. **Vor dem Live-Gang entfernen:**
-die `<div class="vbar">`-Blöcke, den Abschnitt „Umschalter" in `assets/style.css`
-und den Block „Farbwelt umschalten" in `assets/main.js`.
-
-## Zwei Farbwelten
-
-| | Aktiv über | Herkunft |
-|---|---|---|
-| Oliv/Orange | Standard | die Präsentation, vom Kunden bestätigt |
-| Navy/Gold | `<html data-farbe="blau">` | der Logoentwurf „Pressburger Consulting" |
-
-Umgesetzt als reiner Token-Tausch in `assets/style.css` (`:root[data-farbe="blau"]`)
-— kein Baustein und kein HTML ändert sich. Die Wahl lässt sich direkt verlinken
-(`?farbe=blau` bzw. `?farbe=oliv`) und wird im Browser des Betrachters gemerkt.
+Der Kunde hat am 13.9. seinen eigenen Text geliefert und die Folienstruktur
+verworfen. Die Seite ist seitdem **ein** One-Pager in **Navy/Gold** (Farben des
+Logos). Die früheren Entwürfe 2 (vier Seiten) und 3 (kompakt) sowie die
+Oliv-Farbwelt liegen nur noch in der Git-Historie; Oliv lässt sich zum Vergleich
+weiterhin über `?farbe=oliv` aufrufen.
 
 ## Aufbau
 
@@ -106,15 +87,14 @@ Alles Fehlende ist im Entwurf sichtbar als gestrichelter Kasten markiert
 - [ ] Impressum: USt-IdNr. bzw. Kleinunternehmer-Hinweis
 - [ ] Portraitfoto in Originalauflösung → `bilder/achim-pressburger.jpg`
 - [ ] Zwei Bilder für die Erfolgsgeschichten → `bilder/erfolg-badsanierung.webp`, `bilder/erfolg-balkonsanierung.webp` (3:2, ~1600×1067, als „Symbolbild" beschriftet)
-- [ ] Entwürfe 2 und 3 auf den neuen Text bringen — oder entfernen, sobald der Kunde Entwurf 1 bestätigt
 - [x] Logo eingebaut (Bildmarke im Kopf, aus dem JPEG freigestellt)
 - [ ] Logo als **SVG** vom Grafiker — schärfer und ~5 statt 95 KB
 - [ ] Helle Logofassung für dunkle Flächen (Fußzeile)
 - [ ] Eigene Fotos des Kunden, falls vorhanden
-- [ ] Entscheidung Farbwelt: Oliv/Orange oder Navy/Gold
+- [x] Farbwelt: Navy/Gold
 - [ ] Entscheidung Name im Kopf: „Achim Pressburger" oder „Pressburger Consulting"
 - [ ] Wunschdomain
-- [ ] Vor dem Live-Gang: Umschaltleiste entfernen, `robots.txt` und das `noindex`-Meta in `index.html`
+- [ ] Vor dem Live-Gang: `robots.txt` und das `noindex`-Meta in `index.html`
       entfernen, `<link rel="canonical">` auf die echte Domain setzen
 
 ## Hosting
