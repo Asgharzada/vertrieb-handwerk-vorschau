@@ -1,0 +1,588 @@
+/* Vertrieb im Handwerk - Achim Pressburger
+   Palette und Typografie aus der Praesentation uebernommen. */
+
+:root {
+  /* Grundpalette: Navy und Gold aus dem Logo. Die Token-Namen (--olive,
+     --orange) stammen aus der ersten Fassung und bleiben, damit die
+     Bausteine unveraendert weiterlaufen. */
+  --paper:      #F6F4EF;
+  --paper-warm: #EFECE4;
+  --card:       #FFFFFF;
+  --ink:        #1B2A47;
+  --ink-soft:   #4B5769;
+  --ink-mute:   #8892A3;
+  --olive:      #22345A;
+  --olive-dark: #16233D;
+  --olive-tint: #E9EDF4;
+  --orange:     #A07E38;
+  --line:       #E2DDD1;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans:  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --wrap: 1140px;
+  --gap: clamp(1rem, 2.5vw, 1.75rem);
+  --section-y: clamp(4rem, 9vw, 7.5rem);
+  --radius: 10px;
+  /* Kopfhoehe haengt am Logo und wird an drei Stellen gebraucht:
+     Kopfzeile, Sprungmarken-Versatz und Ansatz des mobilen Menues. */
+  --kopfhoehe: 88px;
+  --shadow: 0 1px 2px rgba(46, 69, 80, .05), 0 8px 24px rgba(46, 69, 80, .06);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--kopfhoehe) + 18px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -.005em;
+  margin: 0 0 .5em;
+  font-weight: 700;
+}
+h1 { font-size: clamp(2.5rem, 7vw, 4.25rem); }
+h2 { font-size: clamp(1.9rem, 4.2vw, 2.9rem); }
+h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
+p  { margin: 0 0 1.1em; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--olive-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--orange); }
+
+.wrap { width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto; }
+@media (max-width: 560px) { .wrap { width: calc(100% - 2rem); } }
+
+/* ---------- Kopfzeile ---------- */
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
+  transition: border-color .25s, box-shadow .25s;
+}
+.site-header.is-stuck {
+  border-bottom-color: var(--line);
+  box-shadow: 0 6px 20px rgba(46, 69, 80, .05);
+}
+.header-inner {
+  display: flex; align-items: center; gap: 1.5rem;
+  min-height: var(--kopfhoehe);
+}
+.site-header .wp-block-site-logo { margin-right: auto; line-height: 0; }
+.site-header .wp-block-site-logo img {
+  /* Logo liegt auf weissem Grund; multiply blendet das Weiss auf dem
+     Papierton aus. Deshalb ist der Kopf voll deckend. */
+  height: 62px; width: auto !important; max-width: none;
+  mix-blend-mode: multiply;
+}
+@media (max-width: 900px) { .site-header .wp-block-site-logo img { height: 50px; } }
+@media (max-width: 380px) { .site-header .wp-block-site-logo img { height: 44px; } }
+
+/* Core-Navigation: eigene Optik, Responsive-Verhalten von WordPress. */
+.site-header .wp-block-navigation { font-size: .875rem; }
+.site-header .wp-block-navigation .wp-block-navigation__container { gap: 1.75rem; align-items: center; }
+.site-header .wp-block-navigation-item__content {
+  color: var(--ink-soft); text-decoration: none; padding: .35rem 0; position: relative; white-space: nowrap;
+}
+.site-header .wp-block-navigation-item__content::after {
+  content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 2px;
+  background: var(--orange); transition: right .25s ease;
+}
+.site-header .wp-block-navigation-item__content:hover,
+.site-header .wp-block-navigation-item.is-active .wp-block-navigation-item__content { color: var(--ink); }
+.site-header .wp-block-navigation-item__content:hover::after,
+.site-header .wp-block-navigation-item.is-active .wp-block-navigation-item__content::after { right: 0; }
+
+/* Der Knopf in der Navigation: eigener Eintrag mit Klasse "nav-cta". */
+.site-header .nav-cta .wp-block-navigation-item__content {
+  background: var(--olive); color: #fff; padding: .6rem 1.1rem; border-radius: var(--radius);
+  box-shadow: var(--shadow); font-weight: 500;
+}
+.site-header .nav-cta .wp-block-navigation-item__content:hover { background: var(--olive-dark); color: #fff; }
+.site-header .nav-cta .wp-block-navigation-item__content::after { display: none; }
+
+/* Aufklapp-Menue auf dem Telefon (von WordPress gerendert) */
+.site-header .wp-block-navigation__responsive-container-open,
+.site-header .wp-block-navigation__responsive-container-close { color: var(--ink); }
+.site-header .wp-block-navigation__responsive-container.is-menu-open {
+  background: var(--paper); padding: 1.5rem 1.25rem;
+}
+.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container { gap: 0; }
+.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item { width: 100%; }
+.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+  display: block; padding: .9rem 0; border-bottom: 1px solid var(--line); font-size: 1rem;
+}
+.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content::after { display: none; }
+.site-header .wp-block-navigation__responsive-container.is-menu-open .nav-cta .wp-block-navigation-item__content {
+  margin-top: 1rem; border: 0; text-align: center;
+}
+
+/* ---------- Bausteine ---------- */
+
+.section { padding-block: var(--section-y); }
+.section--tint { background: var(--paper-warm); }
+.section--olive { background: var(--olive); color: rgba(255,255,255,.85); }
+.section--olive h2, .section--olive h3 { color: #fff; }
+.section--olive .eyebrow { color: rgba(255,255,255,.6); }
+
+.eyebrow {
+  font-size: .6875rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-mute); margin: 0 0 1rem; font-weight: 500;
+}
+.rule { width: 68px; height: 3px; background: var(--orange); border: 0; margin: 0 0 1.75rem; }
+.lead { font-size: clamp(1.0625rem, 1.6vw, 1.25rem); color: var(--ink-soft); max-width: 62ch; }
+.section-head { max-width: 68ch; margin-bottom: clamp(2rem, 4vw, 3.25rem); }
+
+.grid { display: grid; gap: var(--gap); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 1000px) { .grid-5, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px)  { .grid-3 { grid-template-columns: 1fr; } }
+@media (max-width: 620px)  { .grid-2, .grid-4, .grid-5 { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--card); border-radius: var(--radius);
+  border-top: 3px solid var(--orange);
+  padding: 1.5rem 1.35rem; box-shadow: var(--shadow);
+}
+.card h3 { margin-bottom: .35rem; }
+.card p { font-size: .9375rem; color: var(--ink-soft); }
+.card .num {
+  display: block; font-family: var(--serif); font-size: .8125rem; font-weight: 700;
+  color: var(--orange); letter-spacing: .08em; margin-bottom: .6rem;
+}
+
+.card--olive {
+  background: var(--olive); border-top-color: var(--orange); color: rgba(255,255,255,.82);
+}
+.card--olive h3 { color: #fff; }
+.card--olive p { color: rgba(255,255,255,.8); }
+.card--olive .num { color: rgba(255,255,255,.65); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative; padding-block: clamp(4rem, 11vw, 8.5rem) clamp(3.5rem, 8vw, 6rem);
+  border-left: 4px solid var(--orange); overflow: hidden;
+}
+.hero::after {
+  content: ""; position: absolute; right: -12%; top: -20%;
+  width: 46vw; height: 46vw; max-width: 620px; max-height: 620px;
+  background: radial-gradient(circle at 50% 50%, rgba(110,127,78,.14), transparent 68%);
+  border-radius: 50%; pointer-events: none;
+}
+/* Achtung: .hero-inner traegt auch .wrap, und .wrap zentriert sich per
+   margin-inline:auto. Eine max-width hier wuerde nicht den Text schmaler
+   machen, sondern den ganzen Kasten schrumpfen und mittig schieben - der
+   Kopfbereich stuende dann weiter rechts als jeder Abschnitt darunter.
+   Deshalb begrenzen die Kinder ihre Breite selbst. */
+.hero-inner { position: relative; }
+.hero-inner > * { max-width: 46rem; }
+.hero h1 { margin-bottom: .35em; }
+.hero .claim {
+  font-family: var(--serif); font-size: clamp(1.25rem, 2.6vw, 1.65rem);
+  color: var(--olive-dark); margin-bottom: 1.25rem;
+}
+.hero .claim em { font-style: normal; color: var(--orange); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: .5rem 2rem; margin-top: 2.75rem;
+  padding-top: 1.5rem; border-top: 1px solid var(--line);
+  font-size: .8125rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute);
+}
+
+/* ---------- Kennzahlen ---------- */
+
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--gap); max-width: 640px; }
+@media (max-width: 520px) { .facts { grid-template-columns: 1fr; } }
+.fact {
+  background: var(--olive); color: #fff; border-radius: var(--radius);
+  padding: 1.4rem 1.5rem; box-shadow: var(--shadow);
+}
+.fact span {
+  display: block; font-size: .6875rem; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.68); margin-bottom: .3rem;
+}
+.fact strong { font-family: var(--serif); font-size: clamp(1.25rem, 2.4vw, 1.6rem); font-weight: 700; }
+
+/* ---------- Bildsprache ----------
+   Alles selbst gezeichnet und inline im HTML: keine fremden Dateien,
+   keine Lizenzfragen, und die Grafiken nehmen die Farbe der jeweiligen
+   Farbwelt automatisch an. */
+
+.icon {
+  width: 26px; height: 26px; flex: 0 0 auto;
+  color: var(--orange); stroke: currentColor; fill: none;
+  stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+}
+.card--olive .icon, .section--olive .icon { color: rgba(255,255,255,.9); }
+
+.kartenkopf {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .75rem; margin-bottom: .9rem;
+}
+.kartenkopf .num { margin-bottom: 0; }
+
+/* Grosse Grafik im Kopfbereich - reine Dekoration, deshalb auf
+   kleinen Schirmen ausgeblendet. */
+.hero-deko {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  /* Buendig mit der rechten Kante des Rasters, nicht mit dem Fensterrand -
+     sonst haengt die Zeichnung halb ausserhalb. */
+  right: max(1.25rem, calc((100% - var(--wrap)) / 2));
+  width: 330px; height: auto; opacity: .85; pointer-events: none;
+  color: var(--olive);
+}
+/* Der Text ist bis 46rem breit. Erst ab dieser Fensterbreite bleibt daneben
+   genug Platz, vorher wuerde die Zeichnung in die Schlagzeile laufen. */
+@media (max-width: 1149px) { .hero-deko { display: none; } }
+
+/* Erklaerende Zeichnung: aus vielen Anfragen werden wenige Auftraege. */
+.diagramm {
+  display: block; width: 100%; max-width: 560px; height: auto;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+.diagramm text {
+  font-family: var(--sans); font-size: 14px; fill: var(--ink-mute);
+  letter-spacing: .14em;
+}
+/* Die Zeichnung skaliert mit ihrer Breite. Auf dem Telefon schrumpft sie
+   auf etwa zwei Drittel - die Beschriftung waere dann nur noch neun Pixel
+   hoch, also waechst sie hier im Koordinatensystem mit. */
+@media (max-width: 680px) { .diagramm text { font-size: 20px; } }
+.diagramm .zahl { font-family: var(--serif); font-size: 22px; fill: var(--ink); letter-spacing: 0; text-transform: none; }
+.diagramm .viele { fill: var(--olive); opacity: .8; }
+.diagramm .wenige { fill: var(--orange); }
+.diagramm .verloren { fill: var(--ink-mute); opacity: .35; }
+.diagramm .trichter { fill: var(--card); stroke: var(--ink-mute); stroke-width: 1.5; opacity: .55; }
+.diagramm .leck { stroke: var(--ink-mute); stroke-width: 1.4; stroke-dasharray: 3 4; opacity: .6; fill: none; }
+.diagramm .leckspitze {
+  stroke: var(--ink-mute); stroke-width: 1.4; opacity: .6; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ---------- Fliesstext-Abschnitte (Kundentext vom 13.9.) ---------- */
+
+.prosa { max-width: 68ch; }
+
+/* Text links, Zeichnung rechts - sonst bleibt neben dem auf Lesebreite
+   begrenzten Text die halbe Seite leer. */
+.text-und-bild {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+}
+.text-und-bild .diagramm { margin-top: 0; max-width: none; }
+@media (max-width: 900px) {
+  .text-und-bild { grid-template-columns: 1fr; }
+  .text-und-bild .diagramm { max-width: 560px; margin-top: 1rem; }
+}
+.prosa p { color: var(--ink-soft); }
+.prosa p + p { margin-top: 1.1em; }
+
+/* Zwei Spalten fuer die sieben Leistungsbausteine - Liste, kein Kartenraster. */
+.leistungen {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: .25rem var(--gap);
+  counter-reset: leistung;
+}
+@media (max-width: 720px) { .leistungen { grid-template-columns: 1fr; } }
+.leistungen li {
+  counter-increment: leistung;
+  display: flex; gap: 1rem; align-items: baseline;
+  padding: .95rem 0; border-bottom: 1px solid var(--line);
+  color: var(--ink); font-size: 1rem; line-height: 1.5;
+}
+.leistungen li::before {
+  content: counter(leistung, decimal-leading-zero);
+  font-family: var(--serif); font-weight: 700; font-size: .8125rem;
+  color: var(--orange); letter-spacing: .08em; flex: 0 0 2rem;
+}
+
+/* ---------- Erfolgsgeschichten ---------- */
+
+/* Query-Loop: jede Geschichte ein <li>, abwechselnd gespiegelt. */
+.erfolge-liste { list-style: none; margin: 0; padding: 0; }
+.erfolge-liste > li.wp-block-post {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+}
+.erfolge-liste > li.wp-block-post + li.wp-block-post { margin-top: clamp(3rem, 7vw, 5.5rem); }
+.erfolge-liste > li.wp-block-post:nth-child(even) .erfolg-bild { order: 2; }
+@media (max-width: 860px) {
+  .erfolge-liste > li.wp-block-post { grid-template-columns: 1fr; }
+  .erfolge-liste > li.wp-block-post:nth-child(even) .erfolg-bild { order: 0; }
+}
+
+.erfolg-bild, .erfolg-bild.wp-block-post-featured-image { margin: 0; }
+.erfolg-bild img {
+  /* height:auto ist noetig, sonst gewinnt das height-Attribut des <img>
+     gegen aspect-ratio und das Bild wird in die Hoehe gezogen. */
+  width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover;
+  border-radius: var(--radius); box-shadow: var(--shadow); display: block;
+}
+/* Solange das Foto fehlt: ruhige Flaeche in der Akzentfarbe, nicht leer. */
+.erfolg-bild .bildslot {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.06) 25%, transparent 25%, transparent 50%,
+      rgba(255,255,255,.06) 50%, rgba(255,255,255,.06) 75%, transparent 75%) 0 0 / 28px 28px,
+    var(--olive);
+  display: grid; place-items: center; color: rgba(255,255,255,.75);
+  font-size: .8125rem; letter-spacing: .14em; text-transform: uppercase; text-align: center;
+  padding: 1rem;
+}
+.erfolg-bild figcaption {
+  margin-top: .6rem; font-size: .75rem; color: var(--ink-mute); letter-spacing: .04em;
+}
+
+.erfolg-text .wp-block-post-title { font-size: clamp(1.4rem, 2.6vw, 1.85rem); margin: 0 0 .75rem; }
+.erfolg-text .wp-block-post-title a { color: inherit; text-decoration: none; }
+.erfolg-text p { font-size: .9875rem; }
+
+.kennzahl { margin-bottom: 1.25rem; }
+.kennzahl .wp-block-post-excerpt__excerpt {
+  display: inline-flex; flex-direction: column; gap: .1rem;
+  border-left: 3px solid var(--orange); padding: .35rem 0 .35rem 1rem;
+  margin: 0 0 1.25rem;
+}
+.kennzahl strong { font-family: var(--serif); font-size: clamp(1.6rem, 3.2vw, 2.2rem); color: var(--ink); line-height: 1.1; }
+.kennzahl span { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); }
+
+/* Kontakt-Kacheln fuer Telefon, E-Mail, Anschrift */
+.kontaktdaten { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; gap: .9rem; }
+.kontaktdaten li { display: flex; gap: .85rem; align-items: baseline; font-size: 1rem; }
+.kontaktdaten .k { flex: 0 0 5.5rem; font-size: .6875rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); }
+.kontaktdaten a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.kontaktdaten a:hover { color: var(--orange); border-color: var(--orange); }
+
+/* ---------- Zitate / Ausreden ---------- */
+
+.quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; margin-top: 2.5rem; }
+@media (max-width: 720px) { .quotes { grid-template-columns: 1fr; } }
+.quote {
+  background: var(--card); border-left: 3px solid var(--orange);
+  padding: .95rem 1.15rem; border-radius: 0 6px 6px 0;
+  font-size: .9375rem; color: var(--ink); box-shadow: 0 1px 2px rgba(46,69,80,.04);
+}
+
+.pullquote {
+  border-left: 4px solid var(--orange); padding: .35rem 0 .35rem 1.75rem;
+  margin: clamp(3rem, 6vw, 4.5rem) 0 0; max-width: 40rem;
+}
+.pullquote p {
+  font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.25; color: var(--ink); margin-bottom: .5rem;
+}
+.pullquote p em { font-style: normal; color: var(--orange); display: block; }
+.pullquote cite { font-style: normal; font-size: .9375rem; color: var(--ink-mute); }
+
+/* ---------- Ablauf / Kette ---------- */
+
+.chain .card { position: relative; }
+@media (min-width: 861px) {
+  .chain .card:not(:last-child)::after {
+    content: ""; position: absolute; top: 50%; right: calc(var(--gap) * -1);
+    width: var(--gap); height: 1px; background: var(--line);
+  }
+}
+
+.statement {
+  background: var(--card); border-left: 3px solid var(--orange);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.5rem 1.75rem; box-shadow: var(--shadow);
+  font-family: var(--serif); font-size: clamp(1.1rem, 2.1vw, 1.4rem);
+  line-height: 1.45; color: var(--ink); max-width: 48rem;
+}
+
+/* ---------- Frueher / Heute ---------- */
+
+.split { display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--gap); align-items: stretch; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+.split .panel {
+  background: var(--card); border-left: 3px solid var(--orange);
+  border-radius: 0 var(--radius) var(--radius) 0; padding: 1.6rem 1.75rem; box-shadow: var(--shadow);
+}
+.split .panel--olive {
+  background: var(--olive); border-left-color: var(--orange); color: rgba(255,255,255,.85);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.split .panel--olive span {
+  font-size: .6875rem; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.65); margin-bottom: .4rem; display: block;
+}
+.split .panel--olive strong {
+  font-family: var(--serif); font-size: clamp(1.3rem, 2.6vw, 1.75rem); color: #fff; line-height: 1.25;
+}
+
+/* ---------- Agenda ---------- */
+
+.agenda { list-style: none; margin: 0; padding: 0; display: grid; gap: .85rem; }
+.agenda li { display: flex; gap: 1rem; align-items: flex-start; }
+.agenda .n {
+  flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--orange); color: #fff; font-size: .75rem; font-weight: 600;
+  display: grid; place-items: center; margin-top: .15rem;
+}
+.agenda .t { color: var(--ink); }
+.section--olive .agenda .t { color: rgba(255,255,255,.9); }
+
+.callout {
+  background: var(--olive); color: #fff; border-radius: var(--radius);
+  padding: 2rem 1.9rem; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.callout span {
+  font-size: .6875rem; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+}
+.callout strong { font-family: var(--serif); font-size: clamp(1.8rem, 3.4vw, 2.4rem); display: block; margin: .2rem 0 .1rem; }
+.callout small { color: rgba(255,255,255,.72); font-size: .9375rem; }
+
+/* Auf olivem Grund braucht die Karte den Gegenklang: helles Papier. */
+.section--olive .callout {
+  background: var(--paper); color: var(--ink);
+  border-top: 3px solid var(--orange);
+}
+.section--olive .callout span { color: var(--ink-mute); }
+.section--olive .callout strong { color: var(--ink); }
+.section--olive .callout small { color: var(--ink-soft); }
+
+/* ---------- Ueber mich ---------- */
+
+.about { display: grid; grid-template-columns: 300px 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+@media (max-width: 820px) { .about { grid-template-columns: 1fr; } }
+.portrait {
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  background: var(--olive-tint);
+  /* Das gelieferte Foto ist quadratisch (640 px). Quadrat statt 3:4,
+     damit nichts vom Gesicht beschnitten wird. */
+  aspect-ratio: 1 / 1;
+  display: grid; place-items: center; border-top: 3px solid var(--orange);
+  max-width: 340px;
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.portrait .ph { text-align: center; color: var(--olive-dark); font-size: .8125rem; padding: 1rem; }
+.about .name { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); margin-bottom: .1rem; }
+.about .role { font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 1.4rem; }
+
+.platzhalter {
+  border: 1px dashed var(--olive); border-radius: 6px; background: var(--olive-tint);
+  padding: .9rem 1.1rem; font-size: .875rem; color: var(--olive-dark); margin-top: 1.25rem;
+}
+.platzhalter b { display: block; font-size: .6875rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: .25rem; }
+
+/* ---------- Kontakt ---------- */
+
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
+.contact-list { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; gap: .9rem; }
+.contact-list li { display: flex; gap: .85rem; align-items: baseline; font-size: .9375rem; }
+.contact-list .k {
+  flex: 0 0 5.5rem; font-size: .6875rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute);
+}
+.contact-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.contact-list a:hover { color: var(--orange); border-color: var(--orange); }
+
+.form { background: var(--card); border-top: 3px solid var(--orange); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); }
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: .35rem; }
+.field input, .field textarea {
+  width: 100%; font: inherit; font-size: .9375rem; color: var(--ink);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+  padding: .7rem .85rem; transition: border-color .2s, box-shadow .2s;
+}
+.field textarea { min-height: 130px; resize: vertical; }
+.field input:focus, .field textarea:focus {
+  outline: none; border-color: var(--olive); box-shadow: 0 0 0 3px rgba(110,127,78,.14);
+}
+.form .hint { font-size: .8125rem; color: var(--ink-mute); margin-top: .9rem; }
+
+/* ---------- Fusszeile ---------- */
+
+.site-footer { background: var(--ink); color: rgba(255,255,255,.62); padding-block: 2.75rem; font-size: .875rem; }
+.footer-inner { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; }
+.footer-inner .brand-f { font-family: var(--serif); color: #fff; font-size: 1rem; margin-right: auto; }
+.site-footer a { color: rgba(255,255,255,.72); text-decoration: none; }
+.site-footer a:hover { color: var(--orange); }
+
+/* ---------- Rechtsseiten ---------- */
+
+/* Gleiche Falle wie beim Kopfbereich: .legal ist ebenfalls ein .wrap. */
+.legal { padding-block: clamp(3rem, 7vw, 5rem); }
+.legal > * { max-width: 46rem; }
+.legal h2 { font-size: clamp(1.25rem, 2.4vw, 1.5rem); margin-top: 2.25rem; }
+.legal p, .legal li { font-size: .9375rem; }
+
+/* ---------- Animation ---------- */
+
+/* Nur wenn JavaScript laeuft, wird eingeblendet - ohne JS ist alles sofort da. */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn:hover { transform: none; }
+}
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; background: var(--olive); color: #fff;
+  padding: .7rem 1.1rem; z-index: 100; border-radius: 0 0 var(--radius) 0;
+}
+.skip-link:focus { left: 0; color: #fff; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 3px; }
+
+/* ---------- WordPress-Besonderheiten ---------- */
+
+.wp-block-image img { height: auto; }
+.portrait.wp-block-image img { width: 100%; height: 100%; object-fit: cover; }
+.wp-block-post-content > .section:first-child { padding-top: 0; }
+
+/* Kontaktformular (Contact Form 7) im Look des Entwurfs */
+.form .wpcf7-form label { display: block; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: .35rem; }
+.form .wpcf7-form p { margin-bottom: 1rem; }
+.form .wpcf7-form-control:not(.wpcf7-submit) {
+  width: 100%; font: inherit; font-size: .9375rem; color: var(--ink);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+  padding: .7rem .85rem; transition: border-color .2s, box-shadow .2s;
+}
+.form .wpcf7-form textarea { min-height: 130px; resize: vertical; }
+.form .wpcf7-form-control:focus { outline: none; border-color: var(--olive); box-shadow: 0 0 0 3px rgba(34,52,90,.14); }
+.form .wpcf7-submit {
+  width: 100%; font: inherit; font-size: .9375rem; font-weight: 500; cursor: pointer;
+  background: var(--olive); color: #fff; border: 0; border-radius: var(--radius);
+  padding: .8rem 1.5rem; box-shadow: var(--shadow);
+}
+.form .wpcf7-submit:hover { background: var(--olive-dark); }
+.form .wpcf7-spinner { display: none; }
+.form .wpcf7-response-output { margin: 1rem 0 0; padding: .75rem 1rem; border: 1px solid var(--line); border-radius: 6px; font-size: .9375rem; }
+.form .wpcf7-not-valid-tip { font-size: .8125rem; color: #a13f2c; margin-top: .3rem; }
+
+/* Blog und Einzelseiten */
+.beitragsliste { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap); }
+.beitragsliste > li { background: var(--card); border-top: 3px solid var(--orange); border-radius: var(--radius); padding: 1.5rem 1.6rem; box-shadow: var(--shadow); }
+.beitragsliste .wp-block-post-title { font-size: clamp(1.25rem, 2.2vw, 1.5rem); margin: 0 0 .4rem; }
+.beitragsliste .wp-block-post-title a { color: var(--ink); text-decoration: none; }
+.beitragsliste .wp-block-post-title a:hover { color: var(--orange); }
+.beitragsliste .wp-block-post-date { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); }
+.einzel { max-width: 46rem; }
+.einzel .wp-block-post-featured-image img { border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.75rem; }
+.einzel .wp-block-post-content > * + * { margin-top: 1.1em; }
+.einzel .wp-block-post-content h2 { font-size: clamp(1.25rem, 2.4vw, 1.5rem); margin-top: 2rem; }
+.zurueck { display: inline-flex; align-items: center; gap: .45rem; font-size: .875rem; text-decoration: none; margin-top: 2.5rem; }
+.zurueck::before { content: "\2190"; }

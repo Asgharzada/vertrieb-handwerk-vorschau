@@ -1,0 +1,15 @@
+/*
+Theme Name:   Pressburger Consulting
+Theme URI:    https://www.pressburger-consulting.de/
+Description:  Massgeschneidertes Block-Theme fuer Pressburger Consulting - Vertrieb im Handwerk. Ein One-Pager mit Erfolgsgeschichten als eigenem Inhaltstyp, Blog und Kontaktformular. Keine externen Ressourcen, keine Cookies auf der oeffentlichen Seite.
+Author:       Mahmood Asgharzada
+Version:      1.0.0
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 8.0
+License:      Proprietary - erstellt fuer Pressburger Consulting
+Text Domain:  pressburger
+*/
+
+/* Das eigentliche Stylesheet liegt in assets/style.css und wird in
+   functions.php eingebunden. Diese Datei traegt nur den Theme-Kopf. */

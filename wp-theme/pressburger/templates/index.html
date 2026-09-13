@@ -1,0 +1,41 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"section","layout":{"type":"default"}} -->
+<main class="wp-block-group section" id="main">
+<!-- wp:group {"className":"wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group wrap">
+<!-- wp:group {"className":"section-head","layout":{"type":"default"}} -->
+<div class="wp-block-group section-head">
+<!-- wp:paragraph {"className":"eyebrow"} -->
+<p class="eyebrow">Blog</p>
+<!-- /wp:paragraph -->
+<!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Impulse für den Vertrieb im Handwerk</h1>
+<!-- /wp:heading -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:query {"queryId":1,"query":{"perPage":10,"postType":"post","order":"desc","orderBy":"date","inherit":true}} -->
+<div class="wp-block-query">
+<!-- wp:post-template {"className":"beitragsliste"} -->
+<!-- wp:post-date {"className":"wp-block-post-date"} /-->
+<!-- wp:post-title {"isLink":true,"level":2} /-->
+<!-- wp:post-excerpt /-->
+<!-- /wp:post-template -->
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>Noch keine Beiträge. Der erste folgt in Kürze.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+</div>
+<!-- /wp:query -->
+</div>
+<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
