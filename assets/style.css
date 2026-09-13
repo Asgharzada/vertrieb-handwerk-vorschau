@@ -112,6 +112,12 @@ a:hover { color: var(--orange); }
 .nav a:hover, .nav a.is-active { color: var(--ink); }
 .nav a:hover::after, .nav a.is-active::after { right: 0; }
 
+/* Der Knopf in der Navigation ist auch ein .nav a - und ".nav a" schlaegt
+   ".btn-primary" bei der Textfarbe. Ohne diese Regel steht graue Schrift
+   auf Navy, praktisch unlesbar. */
+.nav a.btn-primary, .nav a.btn-primary:hover { color: #fff; }
+.nav a.btn::after { display: none; }
+
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
   font-family: var(--sans); font-size: .9375rem; font-weight: 500;
