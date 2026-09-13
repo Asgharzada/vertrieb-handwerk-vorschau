@@ -13,6 +13,7 @@ define( 'PRESSBURGER_VERSION', '1.0.0' );
 
 require_once get_theme_file_path( 'inc/erfolgsgeschichten.php' );
 require_once get_theme_file_path( 'inc/haertung.php' );
+require_once get_theme_file_path( 'inc/darstellung.php' );
 require_once get_theme_file_path( 'inc/einrichtung.php' );
 
 /* ---------- Theme-Unterstuetzung ---------- */
