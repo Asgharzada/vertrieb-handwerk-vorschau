@@ -111,11 +111,17 @@ a:hover { color: var(--orange); }
 
 /* Der Knopf in der Navigation: eigener Eintrag mit Klasse "nav-cta". */
 .site-header .nav-cta .wp-block-navigation-item__content {
-  background: var(--olive); color: #fff; padding: .6rem 1.1rem; border-radius: var(--radius);
-  box-shadow: var(--shadow); font-weight: 500;
+  background: transparent; color: var(--ink); font-weight: 500;
+  border: 1.5px solid var(--orange); border-radius: 999px;
+  padding: .55rem 1.15rem .55rem 1.3rem; margin-left: .35rem;
+  transition: background-color .18s, color .18s, border-color .18s;
 }
-.site-header .nav-cta .wp-block-navigation-item__content:hover { background: var(--olive-dark); color: #fff; }
-.site-header .nav-cta .wp-block-navigation-item__content::after { display: none; }
+.site-header .nav-cta .wp-block-navigation-item__content:hover { background: var(--olive); border-color: var(--olive); color: #fff; }
+.site-header .nav-cta .wp-block-navigation-item__content::after {
+  content: "\2192"; position: static; display: inline-block; width: auto; height: auto;
+  background: none; margin-left: .45rem; transition: transform .2s ease;
+}
+.site-header .nav-cta .wp-block-navigation-item__content:hover::after { transform: translateX(3px); }
 
 /* Aufklapp-Menue auf dem Telefon (von WordPress gerendert) */
 .site-header .wp-block-navigation__responsive-container-open,
@@ -130,7 +136,7 @@ a:hover { color: var(--orange); }
 }
 .site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content::after { display: none; }
 .site-header .wp-block-navigation__responsive-container.is-menu-open .nav-cta .wp-block-navigation-item__content {
-  margin-top: 1rem; border: 0; text-align: center;
+  margin: 1rem 0 0; text-align: center; border: 1.5px solid var(--orange);
 }
 
 /* ---------- Bausteine ---------- */
