@@ -46,8 +46,12 @@ $deko = file_get_contents( get_theme_file_path( 'inc/inhalte/hero-deko.svg' ) );
 </div>
 <!-- /wp:buttons -->
 
+<!-- wp:paragraph {"className":"hero-anruf"} -->
+<p class="hero-anruf">Oder direkt anrufen: <a href="tel:+491758521935">0175 852 19 35</a></p>
+<!-- /wp:paragraph -->
+
 <!-- wp:paragraph {"className":"hero-meta"} -->
-<p class="hero-meta">Vertriebscoaching · Verkaufsprozess · Handwerksbetriebe</p>
+<p class="hero-meta">30 Jahre Vertrieb · Abschlüsse verdreifacht · +30 % Abschlussquote</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

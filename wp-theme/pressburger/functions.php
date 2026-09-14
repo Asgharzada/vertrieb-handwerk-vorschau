@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PRESSBURGER_VERSION', '1.0.2' );
+define( 'PRESSBURGER_VERSION', '1.0.3' );
 
 require_once get_theme_file_path( 'inc/erfolgsgeschichten.php' );
 require_once get_theme_file_path( 'inc/haertung.php' );
@@ -59,6 +59,47 @@ add_action( 'wp_enqueue_scripts', function () {
 add_action( 'wp_head', function () {
 	echo '<script>document.documentElement.className += " js";</script>' . "\n";
 }, 1 );
+
+/* ---------- Vorschaubild fuer Messenger/LinkedIn und strukturierte Daten ---------- */
+
+add_action( 'wp_head', function () {
+	$titel = is_front_page() ? get_bloginfo( 'name' ) . ' – ' . get_bloginfo( 'description' ) : wp_get_document_title();
+	$bild  = get_theme_file_uri( 'assets/bilder/og-bild.jpg' );
+	$url   = is_front_page() ? home_url( '/' ) : get_permalink();
+	$text  = 'Gute Anfragen allein reichen nicht aus. Entscheidend ist, was Ihr Betrieb daraus macht.';
+	echo '<meta property="og:type" content="website">' . "\n";
+	echo '<meta property="og:locale" content="de_DE">' . "\n";
+	echo '<meta property="og:site_name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">' . "\n";
+	echo '<meta property="og:title" content="' . esc_attr( $titel ) . '">' . "\n";
+	echo '<meta property="og:description" content="' . esc_attr( $text ) . '">' . "\n";
+	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
+	echo '<meta property="og:image" content="' . esc_url( $bild ) . '">' . "\n";
+	echo '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' . "\n";
+	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+	if ( ! is_front_page() ) {
+		return;
+	}
+	$daten = array(
+		'@context'      => 'https://schema.org',
+		'@type'         => 'ProfessionalService',
+		'name'          => 'Pressburger Consulting',
+		'alternateName' => 'Vertrieb im Handwerk',
+		'description'   => 'Vertriebscoaching für Handwerksbetriebe: aus bestehenden Anfragen mehr lukrative Aufträge gewinnen.',
+		'url'           => home_url( '/' ),
+		'telephone'     => '+49 175 8521935',
+		'email'         => 'achim@pressburger-consulting.de',
+		'founder'       => array( '@type' => 'Person', 'name' => 'Achim Pressburger' ),
+		'address'       => array(
+			'@type'           => 'PostalAddress',
+			'streetAddress'   => 'Barbarossastr. 68',
+			'postalCode'      => '73732',
+			'addressLocality' => 'Esslingen',
+			'addressCountry'  => 'DE',
+		),
+		'areaServed'    => 'DE',
+	);
+	echo '<script type="application/ld+json">' . wp_json_encode( $daten, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+}, 5 );
 
 /* ---------- Muster-Kategorie ---------- */
 
