@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PRESSBURGER_VERSION', '1.0.3' );
+define( 'PRESSBURGER_VERSION', '1.0.4' );
 
 require_once get_theme_file_path( 'inc/erfolgsgeschichten.php' );
 require_once get_theme_file_path( 'inc/haertung.php' );

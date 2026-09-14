@@ -32,10 +32,16 @@
 <p class="kontaktzeile"><strong>E-Mail</strong> <a href="mailto:achim@pressburger-consulting.de">achim@pressburger-consulting.de</a></p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph {"className":"kontaktzeile"} -->
+<p class="kontaktzeile"><strong>WhatsApp</strong> <a href="https://wa.me/491758521935" rel="noopener">Nachricht schreiben</a></p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"className":"kontaktzeile"} -->
 <p class="kontaktzeile"><strong>Anschrift</strong> Barbarossastr. 68 · 73732 Esslingen</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
+<!-- wp:paragraph {"className":"zusage"} -->
+<p class="zusage">Sie erhalten innerhalb eines Werktags eine Antwort.</p>
+<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 

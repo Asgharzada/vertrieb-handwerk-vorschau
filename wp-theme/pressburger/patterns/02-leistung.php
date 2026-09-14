@@ -62,6 +62,26 @@ $trichter = file_get_contents( get_theme_file_path( 'inc/inhalte/trichter.svg' )
 <!-- wp:paragraph {"className":"statement reveal abstand-oben"} -->
 <p class="statement reveal abstand-oben">So entsteht ein Vertriebssystem, das zu Ihrem Handwerksbetrieb passt: verständlich, praxistauglich und auf profitable Aufträge ausgerichtet. Ihr Team gewinnt Sicherheit im Umgang mit Kunden, Interessenten werden besser geführt und Sie erhöhen die Wahrscheinlichkeit, dass aus guten Anfragen auch gute Aufträge werden.</p>
 <!-- /wp:paragraph -->
+
+<!-- wp:group {"className":"branchen reveal","layout":{"type":"default"}} -->
+<div class="wp-block-group branchen reveal">
+<!-- wp:paragraph {"className":"eyebrow"} -->
+<p class="eyebrow">Für wen</p>
+<!-- /wp:paragraph -->
+<!-- wp:list {"className":"chips"} -->
+<ul class="wp-block-list chips">
+<!-- wp:list-item --><li>Bad &amp; Sanitär</li><!-- /wp:list-item -->
+<!-- wp:list-item --><li>Heizung &amp; Klima</li><!-- /wp:list-item -->
+<!-- wp:list-item --><li>Dach</li><!-- /wp:list-item -->
+<!-- wp:list-item --><li>Fenster &amp; Türen</li><!-- /wp:list-item -->
+<!-- wp:list-item --><li>Innenausbau</li><!-- /wp:list-item -->
+<!-- wp:list-item --><li>Balkon- &amp; Fassadensanierung</li><!-- /wp:list-item -->
+<!-- wp:list-item --><li>Garten- &amp; Landschaftsbau</li><!-- /wp:list-item -->
+<!-- wp:list-item --><li>Elektro</li><!-- /wp:list-item -->
+</ul>
+<!-- /wp:list -->
+</div>
+<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 </section>

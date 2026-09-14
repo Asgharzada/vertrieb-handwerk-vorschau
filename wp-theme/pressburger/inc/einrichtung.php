@@ -108,6 +108,10 @@ function pressburger_erfolg_anlegen( $slug, $titel, $kennzahl, $absaetze, $bild_
 	foreach ( $absaetze as $a ) {
 		$inhalt .= "<!-- wp:paragraph -->\n<p>" . $a . "</p>\n<!-- /wp:paragraph -->\n\n";
 	}
+	// Kundenstimme als Platzhalter - im Beitrag durch das echte Zitat ersetzen.
+	$inhalt .= "<!-- wp:quote {\"className\":\"stimme platzhalter\"} -->\n<blockquote class=\"wp-block-quote stimme platzhalter\">"
+	        . "<!-- wp:paragraph -->\n<p>„Hier stehen ein bis zwei Sätze Ihres Kunden – was sich im Betrieb verändert hat und wie sich die Zusammenarbeit angefühlt hat.“</p>\n<!-- /wp:paragraph -->"
+	        . "<cite>Vorname Nachname, Betrieb, Ort</cite></blockquote>\n<!-- /wp:quote -->\n";
 	$id = wp_insert_post( array(
 		'post_type'    => 'erfolg',
 		'post_status'  => 'publish',

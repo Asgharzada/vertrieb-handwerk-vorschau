@@ -47,7 +47,7 @@ $deko = file_get_contents( get_theme_file_path( 'inc/inhalte/hero-deko.svg' ) );
 <!-- /wp:buttons -->
 
 <!-- wp:paragraph {"className":"hero-anruf"} -->
-<p class="hero-anruf">Oder direkt anrufen: <a href="tel:+491758521935">0175 852 19 35</a></p>
+<p class="hero-anruf">Oder direkt: <a href="tel:+491758521935">0175 852 19 35</a> · <a href="https://wa.me/491758521935" rel="noopener">per WhatsApp</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"hero-meta"} -->

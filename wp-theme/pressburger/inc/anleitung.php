@@ -31,6 +31,7 @@ function pressburger_anleitung_seite() {
 			<li>Links auf <strong>Erfolgsgeschichten → Neue Geschichte</strong>.</li>
 			<li><strong>Titel</strong> eingeben, z. B. „Dachsanierung: Angebotsquote verdoppelt“.</li>
 			<li>Die drei Absätze schreiben: Ausgangslage, Vorgehen, Ergebnis.</li>
+			<li>Darunter das Zitat: den Platzhaltertext durch die <strong>echte Aussage Ihres Kunden</strong> ersetzen, mit Name, Betrieb und Ort – und dessen Einverständnis. Erfundene Kundenstimmen sind wettbewerbsrechtlich abmahnfähig.</li>
 			<li>Rechts in der Seitenleiste unter <strong>Textauszug</strong> die Kennzahl eintragen – eine Zeile, der Punkt „·“ trennt groß und klein: <code>Angebotsquote verdoppelt · innerhalb von sechs Monaten</code></li>
 			<li>Rechts unter <strong>Foto zur Geschichte</strong> ein Bild im Querformat wählen oder hochladen. Bei Symbolbildern in der Mediathek als Beschriftung „Symbolbild“ eintragen.</li>
 			<li>Rechts unter <strong>Reihenfolge</strong> eine Zahl setzen: 1 steht ganz oben.</li>
