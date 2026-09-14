@@ -741,3 +741,12 @@ a:hover { color: var(--orange); }
 
 .zusage { margin-top: 1.25rem; font-size: .9375rem; color: var(--ink); display: flex; gap: .5rem; align-items: baseline; }
 .zusage::before { content: "\2713"; color: var(--orange); font-weight: 700; }
+
+/* Logo in der Fusszeile: das Bild liegt auf Weiss, die Fusszeile ist dunkel -
+   also bekommt es eine helle Karte. */
+.footer-logo, .site-footer .wp-block-site-logo {
+  display: inline-block; background: var(--paper); border-radius: 8px;
+  padding: .6rem .85rem; line-height: 0; flex: 0 0 auto;
+}
+.footer-logo img, .site-footer .wp-block-site-logo img { height: 56px; width: auto !important; max-width: none; mix-blend-mode: multiply; }
+@media (max-width: 640px) { .footer-logo img, .site-footer .wp-block-site-logo img { height: 48px; } }
